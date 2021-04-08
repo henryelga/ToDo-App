@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>ToDo Items</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+    <br>
+
+    <br>
+
+    <form action="/items/new" method='POST'>
+        <label for="item">
+            <h3>Enter your Task : </h3>
+        </label>
+        <input class="form-control form-control-lg" type="text" name='item' id='item'
+            placeholder="e.g. wash clothes, read a book...">
+        <br>
+        <button type="submit" id='submit' class="btn btn-success btn-lg btn-block">Add Item</button>
+    </form>
+
+
+    <br>
+
+    <br>
+
+    {% for item in raw %}
+
+    <div class="input-group">
+
+        <div class="input-group-text">
+            <input type="checkbox" class="checkbox"><span class="check">Completed</span>
+        </div>
+
+        <input class="form-control form-control-lg todo_item" type="text" value="{{item.item}}" disabled>
+
+        <div class="input-group-append">
+            <a href="/items/delete/{{ item.id }}" class="btn btn-danger" type="button">Delete</a>
+        </div>
+    </div>
+    <br>
+
+    <hr>
+
+    <br>
+
+    {% endfor %}
+
+
+</div>
+
+
+
+
+{% endblock %}
